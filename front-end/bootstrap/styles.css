@@ -1,0 +1,51 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 1.5rem;
+}
+
+.navbar-brand {
+    font-size: 2rem;
+}
+
+#navbarNav {
+    justify-content: flex-end;
+    padding: 0 2rem;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#welcome-section {
+    height: 93vh;
+    width: 100%;
+    padding: 2rem;
+    background-color: hsl(0, 66%, 21%);
+}
+
+#welcome-section > .container-fluid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#welcome-section .avatar-container {
+    margin: 3rem 0;
+}
+
+#welcome-section .content-container {
+    color: white;
+    text-shadow: .2rem .2rem .2rem black;
+}
+
+#welcome-section .content-container :is(h2, h3) {
+    margin: 2rem 0;
+}
