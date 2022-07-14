@@ -1,0 +1,128 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+// Variable
+$aQuarter: calc(100%/4);
+
+:root {
+    font-size: 62.5%;
+}
+
+@mixin displayFlex($rowOrCol, $wrap,$horizon, $verti) {
+    display: flex;
+    flex-flow: $rowOrCol $wrap;
+    justify-content: $horizon;
+    align-items: $verti;
+}
+
+.calculator {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: darkgray;
+    @include displayFlex(column, nowrap, flex-start, center);
+
+    &__header {
+        margin-bottom: 2rem;
+        font-size: 2rem;
+    }
+
+    &__main {
+        width: 40%;
+        aspect-ratio: 1/1.2;
+        background-color: black;
+        padding: 1rem;
+
+        &__display-container {
+            width: 100%;
+            height: 20%;
+
+            &__display-expression,
+            &__display-result {
+                display: flex;
+                width: 100%;
+                font-size: 2rem;
+                padding: 1rem;
+                border: .1rem solid white;
+                color: white;
+                justify-content: flex-end;
+            }
+
+            &__display-result {
+                border-bottom: 0;
+            }
+            &__display-expression {
+                border-top: 0;
+            }
+        }
+
+        &__buttons-container {
+            width: 100%;
+            height: 80%;
+            @include displayFlex(row, wrap, flex-start, flex-start);
+
+            button {
+                height: calc(100%/5);
+                border-radius: 0;
+                font-size: 2rem;
+                color: white;
+                border: .1rem solid black;
+            }
+
+            button:hover {
+                border: .1rem solid gold;
+            }
+
+            &__operator,
+            &__decimal,
+            &__numbers {
+                width: $aQuarter;
+            }
+
+            &__operator {
+                background-color: hsl(0, 0%, 42%);
+            }
+            
+            &__operator:hover {
+                background-color: hsl(0, 0%, 37%);
+            }
+
+            &__numbers,
+            &__decimal {
+                background-color: hsl(0, 0%, 29%);
+            }
+
+            &__numbers:hover,
+            &__decimal:hover {
+                background-color: hsl(0, 0%, 39%);
+            }
+
+            #equal {
+                height: calc(2 * 100%/5);
+                transform: translateY(-50%);
+                background-color: hsl(197, 54%, 43%);
+            }
+
+            #equal:hover {
+                background-color: hsl(197, 54%, 53%);
+            }
+
+            &__clear,
+            #zero {
+                width: 50%;
+            }
+
+            &__clear {
+                background-color: hsl(0, 100%, 30%);
+            }
+
+            &__clear:hover {
+                background-color: hsl(0, 100%, 25%);
+            }
+
+        }
+    }
+}
